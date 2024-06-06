@@ -1,6 +1,6 @@
 import { Buttons } from "./Buttons";
 
-export function Footer() {
+ const Footer =() => {
   const year = new Date().getFullYear();
 
   return (
@@ -18,3 +18,4 @@ export function Footer() {
     </>
   );
 }
+export default Footer

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export function PartnersCard(props: { url: string; alt: string }) {
+const  PartnersCard =(props: { url: string; alt: string }) => {
   return (
     <div className="mt-4 bg-gray-200 w-[243px] h-[105px] flex justify-center items-center rounded-md">
       <Image
@@ -13,3 +13,5 @@ export function PartnersCard(props: { url: string; alt: string }) {
     </div>
   );
 }
+
+export default PartnersCard

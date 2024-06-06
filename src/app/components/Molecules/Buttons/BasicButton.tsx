@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
 
-export function BasicButton(props: {
+ const BasicButton = (props: {
   children: ReactNode;
   active: boolean;
   href?: string;
   fontXl?: boolean;
-}) {
+})=> {
   return (
     <li>
       <a
@@ -20,3 +20,6 @@ export function BasicButton(props: {
     </li>
   );
 }
+
+
+export default BasicButton

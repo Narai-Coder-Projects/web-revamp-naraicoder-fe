@@ -1,13 +1,6 @@
 import Image from "next/image";
 
-export function BlogCard(props: {
-  imgUrl: string;
-  alt: string;
-  title: string;
-  description: string;
-  destUrl: string;
-  date: string;
-}) {
+const BlogCard = (props: IBlogCard) =>{
   return (
     <div className="w-[300px] h-[382px] bg-white rounded-md shadow-md">
       <Image
@@ -33,3 +26,4 @@ export function BlogCard(props: {
     </div>
   );
 }
+export default BlogCard

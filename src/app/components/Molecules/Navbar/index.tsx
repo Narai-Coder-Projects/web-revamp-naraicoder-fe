@@ -5,9 +5,9 @@ import {
   BiLogoLinkedinSquare,
   BiLogoYoutube
 } from "react-icons/bi";
-import { BasicButton } from "./Buttons";
+import BasicButton from "../Buttons/BasicButton";
 
-export function Navbar() {
+const Navbar = () => {
   const logos = [BiLogoInstagramAlt, BiLogoGmail, BiLogoLinkedinSquare, BiLogoYoutube];
   return (
     <>
@@ -61,3 +61,5 @@ export function Navbar() {
     </>
   );
 }
+
+export default Navbar
