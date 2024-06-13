@@ -1,13 +1,11 @@
 "use client"
-import SideBarDashboard from "../components/Atoms/navbar/SidebarDashboard"
+import SideBarDashboard from "../components/Atoms/navbar/SidebarDashboard";
 
 const page = () => {
     return (
-        <div className="">
+        <div>
             <SideBarDashboard >
-                <div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ullam voluptas inventore omnis illo consectetur rerum incidunt, dolorum similique expedita ut. Consequatur inventore quos ipsa reiciendis. Saepe ab enim incidunt?</p>
-                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, delectus nesciunt. Assumenda, magnam illo. Ipsum, cumque maxime animi nam velit ipsam amet facere sit at, ratione nihil adipisci, iusto totam!</p>
             </SideBarDashboard>
         </div>
     )

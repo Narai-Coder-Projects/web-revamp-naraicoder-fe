@@ -8,6 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        border: {
+          1: '#DCDCDC'
+        },
+        primary: '#1977F3'
+      },
     },
   },
 };

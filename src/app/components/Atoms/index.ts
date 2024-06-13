@@ -1,8 +1,8 @@
 
 import SideBarDashboard from "./navbar/SidebarDashboard";
-import Table from "./table";
+import FormInput from "./Form/FormInput";
 
 export default {
-    Table,
+    FormInput,
     SideBarDashboard
 }
