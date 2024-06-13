@@ -1,23 +1,31 @@
-import { ReactNode } from "react";
+import Link from "next/link";
+import { IBasicButtonProps } from "./BasicButton.type";
 
- const BasicButton = (props: {
-  children: ReactNode;
-  active: boolean;
-  href?: string;
-  fontXl?: boolean;
-})=> {
-  return (
-    <li>
-      <a
-        href={props.href ?? "#"}
-        className={`block py-2 px-3 ${
-          props.active ? "text-blue-500" : "text-black"
-        } rounded md:bg-transparent md:p-0 ${props.fontXl ? "text-2xl" : ""}`}
-        aria-current="page"
+const BasicButton = (props: IBasicButtonProps) => {
+  const { children, active, fontXl, href, type, backgroundColor, textColor } = props
+  const styleNavbarBtn = `block py-2 px-3 ${active ? "text-blue-500" : "text-black"
+    } rounded md:bg-transparent md:p-0 ${fontXl ? "text-2xl" : ""}`
+
+
+  if (type) {
+    return (
+      <button
+        type={type}
+        className={`${backgroundColor ? backgroundColor : 'bg-primary'} 
+        ${textColor ? textColor: 'text-white'}
+        py-3 w-full rounded-lg text-sm`}
       >
-        {props.children}
-      </a>
-    </li>
+        {children}
+      </button>
+    )
+  }
+  return (
+    <Link
+      href={href ?? "#"}
+      className={styleNavbarBtn}
+    >
+      {children}
+    </Link>
   );
 }
 
