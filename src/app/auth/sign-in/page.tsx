@@ -5,8 +5,10 @@ import FormInput from "@/app/components/Atoms/Form/FormInput";
 import { Formik } from "formik";
 import * as Yup from 'yup';
 import { BasicButton } from "@/app/components/Molecules";
+import { useRouter } from 'next/navigation'
 
 const SignUp = () => {
+    const router = useRouter()
     const validationSchema = Yup.object().shape({
         email: Yup.string().email('Invalid email address').required('Email is required'),
         password: Yup.string().min(8, 'Password must be at least 8 characters').required('Password is required')
@@ -23,10 +25,8 @@ const SignUp = () => {
                     initialValues={{ email: '', password: '' }}
                     validationSchema={validationSchema}
                     onSubmit={(values, actions) => {
-                        setTimeout(() => {
-                            alert(JSON.stringify(values, null, 2));
-                            actions.setSubmitting(false);
-                        }, 1000);
+                        console.log(JSON.stringify(values, null, 2))
+                        router.push('/dashboard')
                     }}
                 >
                     {props => (
