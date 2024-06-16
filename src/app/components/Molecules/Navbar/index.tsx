@@ -54,6 +54,7 @@ const Navbar = () => {
                   </BasicButton>
                 );
               })}
+              <BasicButton backgroundColor="bg-primary" href="auth/sign-in">Sign In</BasicButton>
             </ul>
           </div>
         </div>
