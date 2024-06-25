@@ -1,10 +1,12 @@
+import useAuth from "@/app/hooks/useAuth"
 import Image from "next/image"
-import React, { useState } from "react"
+import { useState } from "react"
 import { IPropsNavDash } from "./SidebarDashboard.type"
 
 
 const SideBarDashboard = (props: IPropsNavDash) => {
     const { children } = props
+    const {onLogout}=useAuth()
     const [isDasboardProfile, setIsDasboardProfile] = useState<boolean>(true)
 
     return (
@@ -47,7 +49,7 @@ const SideBarDashboard = (props: IPropsNavDash) => {
                                             <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Earnings</a>
                                         </li>
                                         <li>
-                                            <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</a>
+                                            <div onClick={onLogout}  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 hover:cursor-pointer dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</div>
                                         </li>
                                     </ul>
                                 </div>
