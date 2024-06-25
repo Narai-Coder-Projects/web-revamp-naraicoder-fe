@@ -1,4 +1,5 @@
 import BasicButton from "./Buttons/BasicButton";
+import Button from "./Buttons/Button";
 
 import BlogCard from "./Cards/BlogCard";
 import PartnersCard from "./Cards/PartnersCard";
@@ -10,5 +11,6 @@ export {
     BlogCard,
     PartnersCard,
     Footer,
-    Navbar
+    Navbar,
+    Button
 }
