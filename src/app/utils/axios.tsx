@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getItemLocalStorage } from '../../../utils/localStorage';
 
 // Buat instance axios
 const api = axios.create({
@@ -17,9 +18,12 @@ api.interceptors.response.use(
 );
 
 // Fungsi untuk melakukan GET request
-const getRequest = async (url, config = {}) => {
+const getRequestWithAuth = async (url) => {
+  const getToken = getItemLocalStorage<string>('token');
   try {
-    const response = await api.get(url, config);
+    const response = await api.get(url, {
+      headers: { Authorization: `Bearer ${getToken}` }
+    });
     return response.data;
   } catch (error) {
     console.error('Error in GET request', error);
@@ -49,4 +53,4 @@ const deleteRequest = async (url, config = {}) => {
   }
 };
 
-export { getRequest, postRequest, deleteRequest };
+export { getRequestWithAuth, postRequest, deleteRequest };

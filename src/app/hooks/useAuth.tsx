@@ -2,7 +2,7 @@
 import { useRouter } from 'next/navigation';
 import { useState } from "react";
 import { getItemLocalStorage, removeItemLocalStorage, setItemLocalStorage } from "../../../utils/localStorage";
-import { POST_LOGIN_API, POST_LOGOUT_API } from "../service/api/authApi";
+import { POST_LOGIN_ADMIN_API, POST_LOGOUT_ADMIN_API } from "../service/api/authApi";
 import { postRequest } from "../utils/axios";
 import { LoginPayload } from "./useAuth.type";
 
@@ -11,7 +11,7 @@ const useAuth = () => {
   const router = useRouter()
   const onLogin = (payload: LoginPayload) => {
     setIsLoading(true)
-    return postRequest(POST_LOGIN_API, payload)
+    return postRequest(POST_LOGIN_ADMIN_API, payload)
       .then((response) => {
         setItemLocalStorage('token', response.data.access_token)
         router.push('/dashboard')
@@ -25,7 +25,7 @@ const useAuth = () => {
 
   const onLogout = () => {
     const getToken = getItemLocalStorage<string>('token');
-    return postRequest(POST_LOGOUT_API, {}, {
+    return postRequest(POST_LOGOUT_ADMIN_API, {}, {
       headers: { Authorization: `Bearer ${getToken}` }
     }).then((r) => {
       removeItemLocalStorage('token');
