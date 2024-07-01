@@ -8,3 +8,5 @@ export const POST_LOGOUT_ADMIN_API = '/api/auth/admin/logout'
 
 // partner api
 export const GET_PARTNER_LIST = 'api/partners'
+export const DELETE_PARTNER_LIST = 'api/partners'
+export const POST_ADD_PARTNER = '/api/partners'

@@ -24,7 +24,9 @@ const getRequestWithAuth = async (url) => {
     const response = await api.get(url, {
       headers: { Authorization: `Bearer ${getToken}` }
     });
-    return response.data;
+    if (response.data.code === 200) {
+      return response.data;
+    }
   } catch (error) {
     console.error('Error in GET request', error);
     throw error;
@@ -35,7 +37,45 @@ const getRequestWithAuth = async (url) => {
 const postRequest = async (url, data = {}, config = {}) => {
   try {
     const response = await api.post(url, data, config);
-    return response.data;
+    if (response.data.code === 200) {
+      return response.data;
+    }
+  } catch (error) {
+    console.error('Error in POST request', error);
+    throw error;
+  }
+};
+
+const postRequestWithAuth = async (url, data = {}, ) => {
+  const getToken = getItemLocalStorage<string>('token');
+  console.log('data', data)
+  try {
+    const response = await api.post(url, data, {
+      headers: { Authorization: `Bearer ${getToken}` }
+    });
+    console.log('res try', response)
+    if (response.data.code === 200) {
+      return response.data;
+    }
+  } catch (error) {
+    console.error('Error in POST request', error);
+    throw error;
+  }
+};
+const postRequestWithAuthMultiple = async (url, data = {}, ) => {
+  const getToken = getItemLocalStorage<string>('token');
+  console.log('data', data)
+  try {
+    const response = await api.post(url, data, {
+      headers:{
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${getToken}` 
+      }
+    });
+    console.log('res try', response)
+    if (response.data.code === 200) {
+      return response.data;
+    }
   } catch (error) {
     console.error('Error in POST request', error);
     throw error;
@@ -43,14 +83,19 @@ const postRequest = async (url, data = {}, config = {}) => {
 };
 
 // Fungsi untuk melakukan DELETE request
-const deleteRequest = async (url, config = {}) => {
+const deleteRequestWithAuth = async (url) => {
+  const getToken = getItemLocalStorage<string>('token');
   try {
-    const response = await api.delete(url, config);
-    return response.data;
+    const response = await api.delete(url, {
+      headers: { Authorization: `Bearer ${getToken}` }
+    });
+    if (response.data.code === 200) {
+      return response.data;
+    }
   } catch (error) {
     console.error('Error in DELETE request', error);
     throw error;
   }
 };
 
-export { getRequestWithAuth, postRequest, deleteRequest };
+export { getRequestWithAuth, postRequest, deleteRequestWithAuth,postRequestWithAuthMultiple, postRequestWithAuth };

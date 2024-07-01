@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useState } from "react"
 import { IPropsNavDash } from "./SidebarDashboard.type"
 import Link from "next/link"
+import { Modal, ModalDelete } from "../../Molecules"
 
 const SideBarDashboard = (props: IPropsNavDash) => {
     const { children } = props
@@ -12,7 +13,7 @@ const SideBarDashboard = (props: IPropsNavDash) => {
 
     return (
         <div>
-            <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+            <nav className="fixed top-0 z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
                 <div className="px-3 py-3 lg:px-5 lg:pl-3">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center justify-start rtl:justify-end">
@@ -30,7 +31,7 @@ const SideBarDashboard = (props: IPropsNavDash) => {
                                         <Image width={24} height={24} className="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo" />
                                     </button>
                                 </div>
-                                <div className={`z-50 ${isDasboardProfile ? 'hidden' : ''}  my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600`} id="dropdown-user">
+                                <div className={`z-30 ${isDasboardProfile ? 'hidden' : ''}  my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600`} id="dropdown-user">
                                     <div className="px-4 py-3" role="none">
                                         <p className="text-sm text-gray-900 dark:text-white" role="none">
                                             Neil Sims
@@ -60,7 +61,7 @@ const SideBarDashboard = (props: IPropsNavDash) => {
                 </div>
             </nav>
 
-            <aside id="logo-sidebar" className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
+            <aside id="logo-sidebar" className="fixed top-0 left-0 z-20 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
                 <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
                     <ul className="space-y-2 font-medium">
                         <li>

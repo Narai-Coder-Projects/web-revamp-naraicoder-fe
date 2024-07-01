@@ -3,10 +3,30 @@ import usePartner from "@/app/hooks/usePartner"
 import Image from "next/image"
 import Link from "next/link"
 import { ICDelete, ICEdit } from "../../../../public/icon"
+import { useEffect, useState } from "react"
+import { Modal, ModalDelete } from "@/app/components/Molecules"
 
 const page = () => {
-    const { datas } = usePartner()
+    const { datas, onDelete, getList, isRefresh, setIsRefresh } = usePartner()
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [selectedId, setSelectedId] = useState<number | null>(null)
 
+    useEffect(() => {
+        getList()
+        setIsRefresh(false)
+    }, [isRefresh])
+    const handleDelete = (id: number) => {
+        setIsModalOpen(!isModalOpen)
+        console.log('hahaa')
+        setSelectedId(id)
+    }
+
+    const confirmDelete = () => {
+        if (selectedId !== null) {
+            onDelete(selectedId)
+            setIsModalOpen(!isModalOpen)
+        }
+    }
     return (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -38,15 +58,15 @@ const page = () => {
                                         {data?.website}
                                     </td>
                                     <td className="px-6 py-4">
-                                        {data?.image}
+                                        <Image src={data?.image} alt="" width={50} height={50} />
                                     </td>
                                     <td className="flex ">
                                         <Link href={'/dashboard/partner/add'} className="hover:bg-slate-200 py-4 px-2  ">
                                             <Image alt="#" className="bg-orange" src={ICEdit} width={24} height={24} />
                                         </Link>
-                                        <Link href={'#'} className="hover:bg-slate-200 py-4 px-2  ">
+                                        <div onClick={() => handleDelete(data.id)} className="hover:bg-slate-200 py-4 px-2">
                                             <Image alt="#" src={ICDelete} width={24} height={24} />
-                                        </Link>
+                                        </div>
                                     </td>
                                 </tr>
                             )
@@ -55,6 +75,12 @@ const page = () => {
                 </tbody>
 
             </table>
+
+            <ModalDelete idDeletePayload={3} onClickY={confirmDelete} />
+
+            {/* {isModalOpen && (
+                <ModalDelete  onClickY={confirmDelete} />
+            )} */}
         </div>
 
     )
