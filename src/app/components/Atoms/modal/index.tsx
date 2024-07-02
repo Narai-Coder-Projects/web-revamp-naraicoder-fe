@@ -1,9 +1,6 @@
-'use client'
-
 import Image from "next/image"
-import { ICClose, ICWarning } from "../../../../../public/icon"
-import { ReactNode, useState } from "react"
-import useModal from "./useModal"
+import { ReactNode } from "react"
+import { ICClose } from "../../../../../public/icon"
 interface IModal {
     children: ReactNode,
     iconClose?: boolean,
@@ -12,11 +9,10 @@ interface IModal {
 }
 
 const Modal = (props: IModal) => {
-    // const { onCancel, isClose } = useModal()
     return (
         <>
-            <div className={`fixed inset-0 z-40 bg-black opacity-50`}></div>
-            <div className={`fixed inset-0 z-50 flex items-center justify-center`}>
+            <div className={`animate-fade-in fixed inset-0 z-40  opacity-50 bg-black`}></div>
+            <div className={`animate-fade-in-up fixed inset-0 z-50 flex items-center justify-center`}>
                 <div className="max-w-[400px] bg-white text-gray-950 p-6 rounded-xl shadow-lg">
                     {
                         props.iconClose && (

@@ -8,6 +8,10 @@ import { useRouter } from "next/navigation"
 const usePartner = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [isRefresh, setIsRefresh] = useState<boolean>(false)
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [selectedId, setSelectedId] = useState<number>()
+
+
     const [datas, setDatas] = useState<IPartnerData[]>()
     const router = useRouter()
 
@@ -16,19 +20,18 @@ const usePartner = () => {
         return getRequestWithAuth(GET_PARTNER_LIST).
             then((r: IPartnerList) => {
                 setDatas(r.data)
-            }
-            )
+            })
             .catch((e) => console.log(e))
     }
-    const onDelete = (id: number) => {
+    const onDelete = (id?: number) => {
         return deleteRequestWithAuth(`${DELETE_PARTNER_LIST}/${id}`)
             .then((response) => {
                 setIsRefresh(true)
+                setIsModalOpen(false)
             })
             .catch((error) => console.warn(error))
     }
     const onAdd = (payload) => {
-        console.log('payload', payload)
         return postRequestWithAuthMultiple(POST_ADD_PARTNER, payload)
             .then((res) => {
                 setIsRefresh(true)
@@ -36,7 +39,13 @@ const usePartner = () => {
             })
             .catch((err) => console.warn(err))
     }
-    return { datas, onDelete, onAdd, getList, isRefresh, setIsRefresh }
+
+    const onCompirmModal = (id: number) => {
+        setIsModalOpen(true)
+        setSelectedId(id)
+    }
+
+    return { datas, onDelete, onAdd, getList, isRefresh, setIsRefresh, isModalOpen, onCompirmModal, selectedId, setIsModalOpen }
 
 
 }

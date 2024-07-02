@@ -72,7 +72,6 @@ const postRequestWithAuthMultiple = async (url, data = {}, ) => {
         Authorization: `Bearer ${getToken}` 
       }
     });
-    console.log('res try', response)
     if (response.data.code === 200) {
       return response.data;
     }
