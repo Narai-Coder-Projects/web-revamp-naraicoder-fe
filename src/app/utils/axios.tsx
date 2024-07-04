@@ -64,7 +64,6 @@ const postRequestWithAuth = async (url, data = {}, ) => {
 };
 const postRequestWithAuthMultiple = async (url, data = {}, ) => {
   const getToken = getItemLocalStorage<string>('token');
-  console.log('data', data)
   try {
     const response = await api.post(url, data, {
       headers:{
@@ -81,8 +80,29 @@ const postRequestWithAuthMultiple = async (url, data = {}, ) => {
   }
 };
 
+const postPutRequestWithAuthMultiple = async (url, data = {}) => {
+  const getToken = getItemLocalStorage<string>('token');
+  try {
+    const response = await api.post(url, data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': `Bearer ${getToken}`,
+        'X-HTTP-Method-Override': 'PUT'
+      }
+    });
+    console.log('response.data', response.data)
+    if (response.data.code === 200) {
+      return response.data;
+    }
+  } catch (error) {
+    console.error('Error in POST request', error);
+    throw error;
+  }
+};
+
+
 // Fungsi untuk melakukan DELETE request
-const deleteRequestWithAuth = async (url) => {
+const deleteRequestWithAuth = async (url:string) => {
   const getToken = getItemLocalStorage<string>('token');
   try {
     const response = await api.delete(url, {
@@ -97,4 +117,4 @@ const deleteRequestWithAuth = async (url) => {
   }
 };
 
-export { getRequestWithAuth, postRequest, deleteRequestWithAuth,postRequestWithAuthMultiple, postRequestWithAuth };
+export { getRequestWithAuth, postPutRequestWithAuthMultiple, postRequest, deleteRequestWithAuth,postRequestWithAuthMultiple, postRequestWithAuth };

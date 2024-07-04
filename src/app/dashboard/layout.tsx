@@ -8,7 +8,6 @@ export default function DashboardLayout({
 }) {
     return (
         <section>
-            {/* <Modal /> */}
             <SideBarDashboard >
                 {children}
             </SideBarDashboard>
