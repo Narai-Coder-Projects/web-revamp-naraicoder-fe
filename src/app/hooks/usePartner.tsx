@@ -3,6 +3,7 @@ import { useState } from "react"
 import { PARTNER_API, } from "../service/api/authApi"
 import { deleteRequestWithAuth, getRequestWithAuth, postPutRequestWithAuthMultiple, postRequestWithAuthMultiple } from "../utils/axios"
 import { IPartner, IPartnerData, IPartnerList } from "./usePartner.type"
+import * as Yup from 'yup';
 
 
 const usePartner = () => {
@@ -12,6 +13,12 @@ const usePartner = () => {
     const [selectedId, setSelectedId] = useState<number>()
     const [datas, setDatas] = useState<IPartnerData[]>()
     const [data, setData] = useState<IPartnerData>()
+    const [initValues, setInitValues] = useState({
+        name: '',
+        website: '',
+        image: ''
+    });
+
     const router = useRouter()
 
     const getList = () => {
@@ -67,6 +74,21 @@ const usePartner = () => {
         setSelectedId(id)
     }
 
+   
+
+    const validationSchema = Yup.object().shape({
+        name: Yup.string().required('Name is required'),
+        website: Yup.string().url('Invalid URL').required('Website is required'),
+        image: Yup.mixed().test(
+            "fileFormat",
+            "Unsupported Format",
+            value => {
+                if (typeof value === 'string') return true; // If the value is a URL, it's valid
+                return value && ['image/jpeg', 'image/png', 'image/gif'].includes(value?.type);
+            }
+        ).required('Image is required')
+    });
+
     return {
         datas,
         data,
@@ -82,6 +104,9 @@ const usePartner = () => {
         getList,
         onUpdate,
         getDetailList,
+        initValues,
+        setInitValues,
+        validationSchema
     }
 
 

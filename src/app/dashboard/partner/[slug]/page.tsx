@@ -10,37 +10,9 @@ import { useSearchParams } from 'next/navigation';
 
 export default function Page({ params }: { params: { slug: string } }) {
     const [preview, setPreview] = useState(null);
-    const { onAdd, getDetailList, data, isLoading, onUpdate } = usePartner();
+    const { getDetailList, onUpdate, onAdd, data, validationSchema, initValues, setInitValues, isLoading } = usePartner();
     const searchParams = useSearchParams();
     const id = searchParams.get("id");
-    const [initValues, setInitValues] = useState({
-        name: '',
-        website: '',
-        image: ''
-    });
-
-    const validationSchema = Yup.object().shape({
-        name: Yup.string().required('Name is required'),
-        website: Yup.string().url('Invalid URL').required('Website is required'),
-        image: Yup.mixed().test(
-            "fileFormat",
-            "Unsupported Format",
-            value => {
-                if (typeof value === 'string') return true; // If the value is a URL, it's valid
-                return value && ['image/jpeg', 'image/png', 'image/gif'].includes(value?.type);
-            }
-        ).required('Image is required')
-    });
-
-    const getUpdatedFields = (initialValues, currentValues) => {
-        const updatedFields = {};
-        for (const key in initialValues) {
-            if (initialValues[key] !== currentValues[key]) {
-                updatedFields[key] = currentValues[key];
-            }
-        }
-        return updatedFields;
-    };
 
     const handleSubmit = (values, actions) => {
         const formData = new FormData();
@@ -50,12 +22,22 @@ export default function Page({ params }: { params: { slug: string } }) {
         if (typeof values.image !== 'string') {
             formData.append('image', values.image);
         }
-
         if (id) {
-            const updatedFields = getUpdatedFields(initValues, values);
-            onUpdate(id, updatedFields);
+            // Create a copy of values excluding the image if it's a string
+            const updatedValues = { ...values };
+            if (typeof values.image === 'string') {
+                delete updatedValues.image;
+            }
+            onUpdate(id, updatedValues);
         } else {
-            onAdd(values);
+            // Only include image in values if it's a file
+            const addedValues = { ...values };
+            if (typeof values.image === 'string') {
+                delete addedValues.image;
+            } else {
+                formData.append('image', values.image);
+            }
+            onAdd(addedValues);
         }
     };
 

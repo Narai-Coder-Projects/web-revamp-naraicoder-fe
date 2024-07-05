@@ -90,7 +90,6 @@ const postPutRequestWithAuthMultiple = async (url, data = {}) => {
         'X-HTTP-Method-Override': 'PUT'
       }
     });
-    console.log('response.data', response.data)
     if (response.data.code === 200) {
       return response.data;
     }
