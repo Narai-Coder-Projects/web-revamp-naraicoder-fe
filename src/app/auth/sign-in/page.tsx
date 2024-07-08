@@ -1,19 +1,20 @@
 'use client'
-import Image from "next/image"
-import ImgSignIn from '../../../../public/images/sign-in-image.svg'
 import FormInput from "@/app/components/Atoms/Form/FormInput";
+import { Button } from "@/app/components/Molecules";
+import useAuth from "@/app/hooks/useAuth";
 import { Formik } from "formik";
+import Image from "next/image";
 import * as Yup from 'yup';
-import { BasicButton } from "@/app/components/Molecules";
-import { useRouter } from 'next/navigation'
+import ImgSignIn from '../../../../public/images/sign-in-image.svg';
 
-const SignUp = () => {
-    const router = useRouter()
+
+const SignIn = () => {
     const validationSchema = Yup.object().shape({
         email: Yup.string().email('Invalid email address').required('Email is required'),
         password: Yup.string().min(8, 'Password must be at least 8 characters').required('Password is required')
     });
-
+    const { onLogin, isLoading, setIsLoading } = useAuth()
+    const initValues = { email: '', password: '' }
     return (
         <div className="flex h-[100vh] justify-between gap-7 md:p-[5%] lg:px-[10%]">
             <div className="w-1/2">
@@ -22,11 +23,14 @@ const SignUp = () => {
             <section className="w-1/2">
                 <h1 className="text-2xl mb-5 font-semibold">Sign In</h1>
                 <Formik
-                    initialValues={{ email: '', password: '' }}
+                    initialValues={initValues}
                     validationSchema={validationSchema}
                     onSubmit={(values, actions) => {
-                        console.log(JSON.stringify(values, null, 2))
-                        router.push('/dashboard')
+                        const payload = {
+                            email: values.email,
+                            password: values.password
+                        }
+                        onLogin(payload)
                     }}
                 >
                     {props => (
@@ -51,7 +55,7 @@ const SignUp = () => {
                             />
                             <p className="text-sm py-4">Forgot password?</p>
 
-                            <BasicButton type="submit">Sign In </BasicButton>
+                            <Button disabled={isLoading} type="submit">Sign In </Button>
                         </form>
                     )}
                 </Formik>
@@ -63,4 +67,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+export default SignIn
