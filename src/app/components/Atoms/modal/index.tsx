@@ -4,8 +4,10 @@ import { ICClose } from "../../../../../public/icon"
 interface IModal {
     children: ReactNode,
     iconClose?: boolean,
-    onClickCancel:() => void,
-    onClickYes: () => void
+    onClickCancel?: () => void,
+    onClickYes?: () => void
+    iconCancel?: boolean
+    iconYes?: boolean
 }
 
 const Modal = (props: IModal) => {
@@ -26,8 +28,16 @@ const Modal = (props: IModal) => {
 
                     {props.children}
                     <div className="w-full flex flex-row  space-x-3" >
-                        <button onClick={props.onClickCancel} className="bg-red-200 hover:bg-red-400 py-2 flex w-full justify-center rounded">Cancel</button>
-                        <button onClick={props.onClickYes} className="border border-primary hover:bg-blue-300 py-2 flex w-full justify-center rounded">Yes</button>
+                        {
+                            props.iconCancel && (
+                                <button onClick={props.onClickCancel} className="bg-red-200 hover:bg-red-400 py-2 flex w-full justify-center rounded">Cancel</button>
+                            )
+                        }
+                        {
+                            props.iconYes && (
+                                <button onClick={props.onClickYes} className="border border-primary hover:bg-blue-300 py-2 flex w-full justify-center rounded">Yes</button>
+                            )
+                        }
                     </div>
                 </div>
             </div>

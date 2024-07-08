@@ -13,7 +13,7 @@ const ModalDelete = (props: IModalDelete) => {
     
     return (
         <>
-            <Modal onClickYes={handleYes} onClickCancel={handleCancel}>
+            <Modal iconCancel iconYes onClickYes={handleYes} onClickCancel={handleCancel}>
                 <div className="flex flex-col items-center pb-3">
                     <Image src={ICWarning} alt="" height={70} width={70} />
                     <p>Are you sure you want to delete this item?</p>

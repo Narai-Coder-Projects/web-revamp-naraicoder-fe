@@ -1,5 +1,5 @@
 import SideBarDashboard from "../components/Atoms/navbar/SidebarDashboard"
-import { Modal, ModalDelete } from "../components/Molecules"
+import ModalError from "../components/Molecules/Modals/ModalError"
 
 export default function DashboardLayout({
     children, // will be a page or nested layout
@@ -8,6 +8,7 @@ export default function DashboardLayout({
 }) {
     return (
         <section>
+            <ModalError />
             <SideBarDashboard >
                 {children}
             </SideBarDashboard>
