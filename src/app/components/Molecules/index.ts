@@ -6,11 +6,15 @@ import PartnersCard from "./Cards/PartnersCard";
 
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import Modal from "./Modals";
+import ModalDelete from "./Modals";
 export {
     BasicButton,
     BlogCard,
     PartnersCard,
     Footer,
     Navbar,
-    Button
+    Button,
+    Modal,
+    ModalDelete
 }
