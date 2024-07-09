@@ -1,60 +1,45 @@
 import Image from "next/image";
-import {
-  BiLogoInstagramAlt,
-  BiLogoGmail,
-  BiLogoLinkedinSquare,
-  BiLogoYoutube
-} from "react-icons/bi";
+import Link from "next/link";
+import { ICInstagram, ICLinkedin, ICYoutobe } from "../../../../../public/icon";
 import BasicButton from "../Buttons/BasicButton";
 
 const Navbar = () => {
-  const logos = [BiLogoInstagramAlt, BiLogoGmail, BiLogoLinkedinSquare, BiLogoYoutube];
+  const LOGOS = [
+    {
+      href: 'https://www.instagram.com/naraicoder/',
+      icon: ICInstagram
+    }, {
+      href: 'https://www.youtube.com/@naraicoder7273',
+      icon: ICYoutobe
+    }, {
+      href: 'https://www.linkedin.com/company/naraicoder/posts/?feedView=all',
+      icon: ICLinkedin
+    },
+  ]
   return (
     <>
-      <nav className="bg-white border-gray-200 fixed w-full z-20 top-0 start-0">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <Image src="/nav-icon.png" width={249} height={84} alt="Logo" />
-          </a>
-          <button
-            data-collapse-toggle="navbar-default"
-            type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 text-gray-400 hover:bg-gray-700 focus:ring-gray-600"
-            aria-controls="navbar-default"
-            aria-expanded="false"
-          >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              className="w-5 h-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 17 14"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M1 1h15M1 7h15M1 13h15"
-              />
-            </svg>
-          </button>
-          <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
+      <nav className="bg-white lg:flex justify-center items-center fixed w-full z-20 top-0 start-0">
+        <div className=" lg:w-[1000px] flex justify-between items-center">
+          <div>
+            <Link href="/" className="flex items-center space-x-3 ">
+              <Image src="/nav-icon.png" width={200} height={75} alt="Logo" />
+            </Link>
+          </div>
+
+          <div className="hidden lg:flex ">
+            <ul className="font-medium flex flex-col p-4 lg:p-0 mt-4 border rounded-lg  lg:flex-row lg:space-x-8  lg:mt-0 lg:border-0 lg:bg-white">
               <BasicButton active={true}>Home</BasicButton>
               <BasicButton active={false}>Articles</BasicButton>
               <BasicButton active={false}>About</BasicButton>
               <BasicButton active={false}>Contact</BasicButton>
-
-              {logos.map((Logo, i) => {
-                return (
-                  <BasicButton active={false} fontXl={true} key={i}>
-                    <Logo />
-                  </BasicButton>
-                );
-              })}
-              <BasicButton backgroundColor="bg-primary" href="auth/sign-in">Sign In</BasicButton>
+              {
+                LOGOS.map((data, key) => (
+                  <Link href={data.href} key={key}>
+                    <Image src={data.icon} alt="#" width={24} height={24} />
+                  </Link>
+                ))
+              }
+              {/* <BasicButton backgroundColor="bg-primary" href="auth/sign-in">Sign In</BasicButton> */}
             </ul>
           </div>
         </div>
