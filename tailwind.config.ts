@@ -13,7 +13,8 @@ const config: Config = {
           1: '#DCDCDC'
         },
         primary: '#1977F3',
-        secondary: '#0F3F62'
+        secondary: '#0F3F62',
+        placeholder : '#8C94A3'
       },
       animation: {
         "fade-in-up": "fade-in-up 0.6s ease-in-out",

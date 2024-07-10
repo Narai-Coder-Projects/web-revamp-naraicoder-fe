@@ -30,7 +30,7 @@ const Navbar = () => {
             <ul className="font-medium flex flex-col p-4 lg:p-0 mt-4 border rounded-lg  lg:flex-row lg:space-x-8  lg:mt-0 lg:border-0 lg:bg-white">
               <BasicButton active={true}>Home</BasicButton>
               <BasicButton active={false}>Articles</BasicButton>
-              <BasicButton active={false}>About</BasicButton>
+              <BasicButton active={false} href="/about">About</BasicButton>
               <BasicButton active={false}>Contact</BasicButton>
               {
                 LOGOS.map((data, key) => (
