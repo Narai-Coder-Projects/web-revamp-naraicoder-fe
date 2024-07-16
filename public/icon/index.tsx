@@ -4,12 +4,17 @@ import ICClose from './icon-close.svg'
 import ICWarning from './icon-warning.svg'
 import ICSuccess from './icon-success.svg'
 import ICError from './icon-error.svg'
-
+import ICInstagram from './icon-instagram.svg'
+import ICLinkedin from './icon-linkedin.svg'
+import ICYoutobe from './icon-youtobe.svg'
 export {
     ICDelete,
     ICEdit,
     ICClose,
     ICWarning,
     ICSuccess,
-    ICError
+    ICError,
+    ICInstagram,
+    ICLinkedin,
+    ICYoutobe
 }

@@ -1,27 +1,29 @@
 import Image from "next/image";
+import Link from "next/link";
 
-const BlogCard = (props: IBlogCard) =>{
+const BlogCard = (props: IBlogCard) => {
   return (
-    <div className="w-[300px] h-[382px] bg-white rounded-md shadow-md">
-      <Image
-        src={props.imgUrl}
-        alt={props.alt}
-        width={200}
-        height={200}
-        className="w-full h-44 rounded-t-md"
-      />
-
+    <div className=" bg-white rounded-md shadow-md">
+      <div className="flex justify-center">
+        <Image
+          src={props.imgUrl}
+          alt={props.alt}
+          width={400}
+          height={400}
+          className="rounded-t-md hover:animate-pulse"
+        />
+      </div>
       <div className="p-4">
         <div className="mb-4">
-          <h1 className="font-bold text-lg mb-2">{props.title}</h1>
-          <p className="text-gray-500 text-sm">{props.description}</p>
+          <h1 className="font-bold text-lg mb-2 md:text-xl">{props.title}</h1>
+          <p className="text-gray-500 text-sm md:text-base">{props.description}</p>
         </div>
-        <footer className="flex justify-between items-center">
+        <div className="flex justify-between items-center">
           <div className="text-gray-500">{props.date}</div>
-          <a href={props.destUrl} className="font-bold">
+          <Link href={props.destUrl} className="font-bold hover:text-secondary">
             Read More
-          </a>
-        </footer>
+          </Link>
+        </div>
       </div>
     </div>
   );

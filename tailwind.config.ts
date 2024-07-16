@@ -12,12 +12,15 @@ const config: Config = {
         border: {
           1: '#DCDCDC'
         },
-        primary: '#1977F3'
+        primary: '#1977F3',
+        secondary: '#0F3F62',
+        placeholder : '#8C94A3'
       },
       animation: {
         "fade-in-up": "fade-in-up 0.6s ease-in-out",
         "fade-in": "fade-in 0.6s ease-in",
-        "blurred-fade-in": "blurred-fade-in 0.9s ease-in-out"
+        "blurred-fade-in": "blurred-fade-in 0.9s ease-in-out",
+        "pulse": "pulse 1s ease-in-out"
       },
       keyframes: {
         "fade-in-up": {
@@ -46,6 +49,17 @@ const config: Config = {
           "100%": {
             "filter": "blur(0)",
             "opacity": "1"
+          }
+        },
+        "pulse": {
+          "0%": {
+            "transform": "scale(1)"
+          },
+          "50%": {
+            "transform": "scale(1.1)"
+          },
+          "100%": {
+            "transform": "scale(1)"
           }
         }
       }
