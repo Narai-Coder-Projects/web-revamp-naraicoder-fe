@@ -50,9 +50,8 @@ const about = () => {
                     </div>
                     <Image alt="#" className="hidden md:flex" src={ImgAboutHero} width={500} height={250} />
                 </section>
-
-                <section className="w-full my-3">
-                    <h1 className="font-bold text-[16px] sm:text-[32px] md:text-[20px] mb-1">Member</h1>
+                <section className="w-full my-3 flex flex-col justify-between items-center">
+                    <h1 className="font-bold text-[16px] sm:text-[32px] md:text-[28px] mb-1">Member</h1>
                     <div className="lg:w-[1000px] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:justify-between justify-around">
                         {
                             datas.map((data, key) => (
