@@ -31,7 +31,7 @@ const Navbar = () => {
               <BasicButton active={true}>Home</BasicButton>
               <BasicButton active={false}>Blogs</BasicButton>
               <BasicButton active={false} href="/about">About</BasicButton>
-              <BasicButton active={false}>Contact</BasicButton>
+              <BasicButton active={false} href="/acara">Acara</BasicButton>
               {
                 LOGOS.map((data, key) => (
                   <Link href={data.href} key={key}>

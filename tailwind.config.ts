@@ -14,6 +14,7 @@ const config: Config = {
         },
         primary: '#1977F3',
         secondary: '#0F3F62',
+        link: '#60A5FA',
         placeholder : '#8C94A3'
       },
       animation: {
