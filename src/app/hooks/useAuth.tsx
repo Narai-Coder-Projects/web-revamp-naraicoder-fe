@@ -14,7 +14,7 @@ const useAuth = () => {
     return postRequest(POST_LOGIN_ADMIN_API, payload)
       .then((response) => {
         setItemLocalStorage('token', response.data.access_token)
-        router.push('/dashboard')
+        router.replace('/dashboard')
         setIsLoading(false)
       })
       .catch((error) => {
@@ -29,7 +29,7 @@ const useAuth = () => {
       headers: { Authorization: `Bearer ${getToken}` }
     }).then((r) => {
       removeItemLocalStorage('token');
-      router.replace('auth/sign-in')
+      router.replace('/auth/sign-in')
     }).catch((e) => console.error(e));
   };
   return { onLogin, isLoading, setIsLoading, onLogout }
