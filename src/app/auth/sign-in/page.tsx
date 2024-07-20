@@ -6,6 +6,7 @@ import { Formik } from "formik";
 import Image from "next/image";
 import * as Yup from 'yup';
 import ImgSignIn from '../../../../public/images/sign-in-image.svg';
+import FormPassword from "@/app/components/Atoms/Form/FormPassword";
 
 
 const SignIn = () => {
@@ -44,7 +45,7 @@ const SignIn = () => {
                                 placeholder="Email address"
                                 error={props.errors.email}
                             />
-                            <FormInput
+                            <FormPassword
                                 type="password"
                                 onChange={props.handleChange}
                                 onBlur={props.handleBlur}
