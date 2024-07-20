@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useFetch } from "./hooks/useFetch";
-import { BlogsData, PartnersData } from "./types";
-import { BlogCard, Footer, Navbar } from "./components/Molecules";
+import { useFetch } from "../hooks/useFetch";
+import { BlogsData, PartnersData } from "@/types";
+import { BlogCard, Footer, Navbar } from "@/components/Molecules";
 
 export default function Home() {
   const partners = useFetch<PartnersData[]>("/api/contents/partners");

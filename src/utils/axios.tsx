@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getItemLocalStorage } from '../../../utils/localStorage';
+import { getItemLocalStorage } from './localStorage';
 
 // Buat instance axios
 const api = axios.create({

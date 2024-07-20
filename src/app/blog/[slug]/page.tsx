@@ -1,7 +1,6 @@
-import { Navbar } from "@/app/components/Molecules"
 import Image from "next/image"
-// import { ImgAboutHero } from "../../../../public/images"
 import img from "../../../../public/card-panel-left-2.png"
+import { Navbar } from "@/components/Molecules"
 
 const page = () => {
     return (

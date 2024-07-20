@@ -1,8 +1,8 @@
 import Link from "next/link"
-import { Footer, Navbar } from "../components/Molecules"
 import Image from "next/image"
 import { bgRegisterEventHero1, bgRegisterEventHero2, bgRegisterEventHero3, ImgBatangGaringLeft, ImgBatangGaringRight, ImgSignIn } from "../../../public/images"
 import { FormPendaftaran, SliderEvent } from "./components"
+import { Footer, Navbar } from "@/components/Molecules"
 
 const page = () => {
     const datasa = [ImgSignIn];

@@ -1,10 +1,10 @@
 'use client'
-import { Button, ModalDelete } from "@/app/components/Molecules"
-import usePartner from "@/app/hooks/usePartner"
+import usePartner from "@/hooks/usePartner"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect } from "react"
 import { ICDelete, ICEdit } from "../../../../public/icon"
+import { Button, ModalDelete } from "@/components/Molecules"
 
 const page = () => {
     const { datas, onDelete, getList, isRefresh, setIsRefresh, isModalOpen, selectedId, onCompirmModal, setIsModalOpen } = usePartner()

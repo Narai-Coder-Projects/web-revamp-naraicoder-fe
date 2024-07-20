@@ -1,10 +1,9 @@
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import { PARTNER_API, } from "../service/api/authApi"
-import { deleteRequestWithAuth, getRequestWithAuth, postPutRequestWithAuthMultiple, postRequestWithAuthMultiple } from "../utils/axios"
 import { IPartner, IPartnerData, IPartnerList } from "./usePartner.type"
 import * as Yup from 'yup';
-
+import { PARTNER_API } from "@/service/api/authApi";
+import { deleteRequestWithAuth, getRequestWithAuth, postPutRequestWithAuthMultiple, postRequestWithAuthMultiple } from "@/utils/axios";
 
 const usePartner = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -73,8 +72,6 @@ const usePartner = () => {
         setIsModalOpen(true)
         setSelectedId(id)
     }
-
-   
 
     const validationSchema = Yup.object().shape({
         name: Yup.string().required('Name is required'),

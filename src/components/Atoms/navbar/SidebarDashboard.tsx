@@ -1,10 +1,9 @@
 'use client'
-import useAuth from "@/app/hooks/useAuth"
+import useAuth from "@/hooks/useAuth"
 import Image from "next/image"
+import Link from "next/link"
 import { useState } from "react"
 import { IPropsNavDash } from "./SidebarDashboard.type"
-import Link from "next/link"
-import { Modal, ModalDelete } from "../../Molecules"
 
 const SideBarDashboard = (props: IPropsNavDash) => {
     const { children } = props

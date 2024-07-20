@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ICInstagram, ICLinkedin, ICYoutobe } from "../../../../../public/icon";
 import BasicButton from "../Buttons/BasicButton";
+import { ICInstagram, ICLinkedin, ICYoutobe  } from "../../../../public/icon";
 
 const Navbar = () => {
   const LOGOS = [

@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { ReactNode } from "react"
-import { ICClose } from "../../../../../public/icon"
+import { ICClose } from "../../../../public/icon"
+
 interface IModal {
     children: ReactNode,
     iconClose?: boolean,

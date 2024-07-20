@@ -1,13 +1,13 @@
 'use client'
-import FormInput from "@/app/components/Atoms/Form/FormInput";
-import { Button } from "@/app/components/Molecules";
-import useAuth from "@/app/hooks/useAuth";
+
+import useAuth from "@/hooks/useAuth";
 import { Formik } from "formik";
 import Image from "next/image";
 import * as Yup from 'yup';
 import ImgSignIn from '../../../../public/images/sign-in-image.svg';
-import FormPassword from "@/app/components/Atoms/Form/FormPassword";
-
+import FormInput from "@/components/Atoms/Form/FormInput";
+import FormPassword from "@/components/Atoms/Form/FormPassword";
+import { Button } from "@/components/Molecules";
 
 const SignIn = () => {
     const validationSchema = Yup.object().shape({

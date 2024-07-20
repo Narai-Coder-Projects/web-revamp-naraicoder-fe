@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Modal from "../../Atoms/modal";
 import Image from "next/image";
-import { ICError, ICSuccess } from "../../../../../public/icon";
+import { ICError } from "../../../../public/icon";
 
 export const useModalError = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);

@@ -1,7 +1,9 @@
 'use client'
-import FormInput from "@/app/components/Atoms/Form/FormInput"
-import { Button } from "@/app/components/Molecules"
-import useAuth from "@/app/hooks/useAuth"
+import FormInput from "@/components/Atoms/Form/FormInput";
+import { Button } from "@/components/Molecules";
+// import FormInput from "@/app/components/Atoms/Form/FormInput"
+// import { Button } from "@/app/components/Molecules"
+import useAuth from "@/hooks/useAuth"
 import { Formik } from "formik"
 import React, { useState } from "react"
 import * as Yup from 'yup';

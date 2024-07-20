@@ -1,7 +1,7 @@
 import Image from "next/image"
-import { Navbar } from "../components/Molecules"
 import { ImgAboutHero } from "../../../public/images"
 import { member1, member2, member3 } from "../../../public/member"
+import { Navbar } from "@/components/Molecules"
 
 const about = () => {
     const datas = [

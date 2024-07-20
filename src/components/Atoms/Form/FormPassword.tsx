@@ -1,8 +1,8 @@
 'use client'
 import Image from 'next/image';
 import { IFormInputProps } from './FormInput.type';
-import { ICEye, ICEyeHalf } from '../../../../../public/icon';
 import { useState } from 'react';
+import { ICEye, ICEyeHalf } from '../../../../public/icon';
 
 const FormPassword = (props: IFormInputProps) => {
     const { label, name, onChange, value, onBlur, placeholder, error, type } = props
