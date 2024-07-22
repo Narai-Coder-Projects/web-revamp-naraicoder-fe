@@ -8,7 +8,7 @@ export default function DashboardLayout({
 }) {
     return (
         <section>
-            <ModalError />
+            {/* <ModalError /> */}
             <SideBarDashboard >
                 {children}
             </SideBarDashboard>
