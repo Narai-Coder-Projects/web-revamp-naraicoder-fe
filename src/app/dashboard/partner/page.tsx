@@ -1,10 +1,10 @@
 'use client'
-import { Button, ModalDelete } from "@/app/components/Molecules"
-import usePartner from "@/app/hooks/usePartner"
+import usePartner from "@/hooks/usePartner"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect } from "react"
 import { ICDelete, ICEdit } from "../../../../public/icon"
+import { Button, ModalDelete } from "@/components/Molecules"
 
 const page = () => {
     const { datas, onDelete, getList, isRefresh, setIsRefresh, isModalOpen, selectedId, onCompirmModal, setIsModalOpen } = usePartner()
@@ -41,7 +41,7 @@ const page = () => {
                     {
                         datas?.map((data, key) => {
                             return (
-                                <tr key={key} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <tr key={key} className="bg-white border-b items-center justify-center dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {data?.name}
                                     </th>
@@ -64,7 +64,13 @@ const page = () => {
                         })
                     }
                 </tbody>
+
             </table>
+            {
+                datas?.length === 0 && (
+                    <p className="text-center w-full py-3">Data kosong</p>
+                )
+            }
             {
                 isModalOpen && (
                     <ModalDelete

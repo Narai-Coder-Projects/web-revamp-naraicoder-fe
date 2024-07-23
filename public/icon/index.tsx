@@ -7,6 +7,9 @@ import ICError from './icon-error.svg'
 import ICInstagram from './icon-instagram.svg'
 import ICLinkedin from './icon-linkedin.svg'
 import ICYoutobe from './icon-youtobe.svg'
+import ICEye from './icon-eye.svg'
+import ICEyeHalf from './icon-eye-half.svg'
+
 export {
     ICDelete,
     ICEdit,
@@ -16,5 +19,7 @@ export {
     ICError,
     ICInstagram,
     ICLinkedin,
-    ICYoutobe
+    ICYoutobe,
+    ICEye,
+    ICEyeHalf
 }

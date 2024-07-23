@@ -1,12 +1,11 @@
 'use client'
-import FormInput from "@/app/components/Atoms/Form/FormInput";
-import { Button } from "@/app/components/Molecules";
-import usePartner from "@/app/hooks/usePartner";
+import FormInput from "@/components/Atoms/Form/FormInput";
+import { Button } from "@/components/Molecules";
+import usePartner from "@/hooks/usePartner";
 import { Formik } from "formik";
 import Image from "next/image";
-import { useEffect, useState, useCallback } from "react";
-import * as Yup from 'yup';
 import { useSearchParams } from 'next/navigation';
+import { useCallback, useEffect, useState } from "react";
 
 export default function Page({ params }: { params: { slug: string } }) {
     const [preview, setPreview] = useState(null);

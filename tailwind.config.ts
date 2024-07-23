@@ -14,13 +14,15 @@ const config: Config = {
         },
         primary: '#1977F3',
         secondary: '#0F3F62',
-        placeholder : '#8C94A3'
+        link: '#60A5FA',
+        placeholder: '#8C94A3'
       },
       animation: {
         "fade-in-up": "fade-in-up 0.6s ease-in-out",
         "fade-in": "fade-in 0.6s ease-in",
         "blurred-fade-in": "blurred-fade-in 0.9s ease-in-out",
-        "pulse": "pulse 1s ease-in-out"
+        "pulse": "pulse 1s ease-in-out",
+        "fade-out-down": "fade-out-down 0.6s ease-out"
       },
       keyframes: {
         "fade-in-up": {
@@ -60,6 +62,16 @@ const config: Config = {
           },
           "100%": {
             "transform": "scale(1)"
+          }
+        },
+        "fade-out-down": {
+          "0%": {
+            "opacity": "1",
+            "transform": "translateY(0)"
+          },
+          "100%": {
+            "opacity": "0",
+            "transform": "translateY(20px)"
           }
         }
       }

@@ -1,10 +1,10 @@
 'use client'
 import { useRouter } from 'next/navigation';
 import { useState } from "react";
-import { getItemLocalStorage, removeItemLocalStorage, setItemLocalStorage } from "../../../utils/localStorage";
-import { POST_LOGIN_ADMIN_API, POST_LOGOUT_ADMIN_API } from "../service/api/authApi";
-import { postRequest } from "../utils/axios";
 import { LoginPayload } from "./useAuth.type";
+import { postRequest } from '@/utils/axios';
+import { POST_LOGIN_ADMIN_API, POST_LOGOUT_ADMIN_API } from '@/service/api/authApi';
+import { getItemLocalStorage, removeItemLocalStorage, setItemLocalStorage } from '@/utils/localStorage';
 
 const useAuth = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -14,7 +14,8 @@ const useAuth = () => {
     return postRequest(POST_LOGIN_ADMIN_API, payload)
       .then((response) => {
         setItemLocalStorage('token', response.data.access_token)
-        router.push('/dashboard')
+        document.cookie = `token=${response.data.access_token}; path=/`;
+        router.replace('/dashboard')
         setIsLoading(false)
       })
       .catch((error) => {
@@ -29,7 +30,7 @@ const useAuth = () => {
       headers: { Authorization: `Bearer ${getToken}` }
     }).then((r) => {
       removeItemLocalStorage('token');
-      router.replace('auth/sign-in')
+      router.replace('/auth/sign-in')
     }).catch((e) => console.error(e));
   };
   return { onLogin, isLoading, setIsLoading, onLogout }

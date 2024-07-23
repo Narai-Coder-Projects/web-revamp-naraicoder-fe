@@ -1,8 +1,8 @@
 'use client'
 
 import Image from "next/image"
-import { ICWarning } from "../../../../../public/icon"
 import Modal from "../../Atoms/modal"
+import { ICWarning } from "../../../../public/icon"
 interface IModalDelete {
     handleYes: () => void
     handleCancel: () => void

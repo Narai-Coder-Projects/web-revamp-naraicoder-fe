@@ -1,17 +1,17 @@
-import SideBarDashboard from "../components/Atoms/navbar/SidebarDashboard"
-import ModalError from "../components/Molecules/Modals/ModalError"
+import Alert from "@/components/Atoms/Alert/alert";
+import SideBarDashboard from "@/components/Atoms/navbar/SidebarDashboard";
 
 export default function DashboardLayout({
-    children, // will be a page or nested layout
+  children, // will be a page or nested layout
 }: {
-    children: React.ReactNode
+  children: React.ReactNode
 }) {
-    return (
-        <section>
-            <ModalError />
-            <SideBarDashboard >
-                {children}
-            </SideBarDashboard>
-        </section>
-    )
+  return (
+    <section className="relative">
+      <Alert iconClose />
+      <SideBarDashboard>
+        {children}
+      </SideBarDashboard>
+    </section>
+  );
 }
