@@ -126,7 +126,7 @@ const usePartner = () => {
       });
   };
 
-  const onCompirmModal = (id: number, payload: IPartner) => {
+  const onCompirmModal = (id: number) => {
     setIsModalOpen(true);
     setSelectedId(id);
   };
