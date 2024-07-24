@@ -2,10 +2,10 @@ import { useAtom } from "jotai";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import * as Yup from 'yup';
-import { PARTNER_API } from "@/service/api/authApi";
 import { deleteRequestWithAuth, getRequestWithAuth, postPutRequestWithAuthMultiple, postRequestWithAuthMultiple } from "@/utils/axios";
 import { alertStateAtom } from "@/atoms/alertAtoms";
 import { IPartner, IPartnerData, IPartnerList } from "./usePartner.type";
+import { PARTNER_API } from "@/service/api/dashboardAPI";
 
 const usePartner = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);

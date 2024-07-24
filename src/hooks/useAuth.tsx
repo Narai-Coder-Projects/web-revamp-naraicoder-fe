@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from "react";
 import { LoginPayload } from "./useAuth.type";
 import { postRequest } from '@/utils/axios';
-import { POST_LOGIN_ADMIN_API, POST_LOGOUT_ADMIN_API } from '@/service/api/authApi';
+import { POST_LOGIN_ADMIN_API, POST_LOGOUT_ADMIN_API } from '@/service/api/dashboardAPI';
 import { getItemLocalStorage, removeItemLocalStorage, setItemLocalStorage } from '@/utils/localStorage';
 
 const useAuth = () => {

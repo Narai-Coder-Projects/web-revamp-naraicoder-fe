@@ -8,3 +8,6 @@ export const POST_LOGOUT_ADMIN_API = '/api/auth/admin/logout'
 
 // partner api
 export const PARTNER_API = 'api/partners'
+
+// teams api
+export const TEAMS_API = 'api/teams'
