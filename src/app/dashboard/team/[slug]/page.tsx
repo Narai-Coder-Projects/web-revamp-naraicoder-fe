@@ -10,11 +10,9 @@ import { useCallback, useEffect, useState } from "react";
 
 export default function Page({ params }: { params: { slug: string } }) {
     const [preview, setPreview] = useState(null);
-    // const { getDetailList, onUpdate, onAdd, data, validationSchema, initValues, setInitValues, isLoading } = usePartner();
     const { validationSchema, onAdd, getDetailList, data, setInitValues, onUpdate, initValues, isLoading } = useTeam()
     const searchParams = useSearchParams();
     const id = searchParams.get("id");
-    console.log('initValues', initValues)
 
     const handleSubmit = (values, actions) => {
         const formData = new FormData();
@@ -39,7 +37,6 @@ export default function Page({ params }: { params: { slug: string } }) {
             } else {
                 formData.append('image', values.image);
             }
-            console.log('addedValues', addedValues)
             onAdd(addedValues);
         }
     };

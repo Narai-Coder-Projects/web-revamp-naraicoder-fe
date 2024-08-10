@@ -1,7 +1,7 @@
 "use client"
 import { alertStateAtom } from "@/atoms/alertAtoms";
 import { TEAMS_API } from "@/service/api/dashboardAPI";
-import { getRequestWithAuth, postPutRequestWithAuthMultiple, postRequestWithAuthMultiple } from "@/utils/axios";
+import { deleteRequestWithAuth, getRequestWithAuth, postPutRequestWithAuthMultiple, postRequestWithAuthMultiple } from "@/utils/axios";
 import { useAtom } from "jotai";
 import { useState } from "react";
 import { ITeamsList, TTeam } from "./useTeam.type";
@@ -11,6 +11,8 @@ import { useRouter } from "next/navigation";
 
 const useTeam = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState<number>();
   const [alertState, setAlertState] = useAtom(alertStateAtom);
   const [datas, setDatas] = useState<TTeam[]>();
   const [data, setData] = useState<TTeam>();
@@ -93,8 +95,8 @@ const useTeam = () => {
   const getDetailList = (id?: number) => {
     return getRequestWithAuth(TEAMS_API + '/' + id)
       .then((r: TTeam) => {
-        setData(r);
-        console.log('r', r)
+        setData(r.data);
+        console.log('r', r.data)
       })
       .catch((e) => {
         console.log(e);
@@ -106,7 +108,10 @@ const useTeam = () => {
       });
   };
 
-
+  const onCompirmModal = (id: number) => {
+    setIsModalOpen(true);
+    setSelectedId(id);
+  };
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Nama wajib diisi'),
@@ -122,7 +127,27 @@ const useTeam = () => {
     ).required('Image is required')
   });
 
-  return { getList, isLoading, data, onAdd, setInitValues, getDetailList, validationSchema, initValues, onUpdate, datas, isRefresh, setIsRefresh }
+  const onDelete = (id?: number) => {
+    return deleteRequestWithAuth(`${TEAMS_API}/${id}`)
+      .then((response) => {
+        setIsRefresh(true);
+        setIsModalOpen(false);
+        setAlertState({
+          type: "success",
+          message: "Partner deleted successfully.",
+          visible: true,
+        });
+      })
+      .catch((error) => {
+        console.warn(error);
+        setAlertState({
+          type: "error",
+          message: "Failed to delete partner.",
+          visible: true,
+        });
+      });
+  };
+  return { getList, isLoading, onDelete, selectedId, setIsModalOpen, isModalOpen, data, onAdd, setInitValues, getDetailList, validationSchema, initValues, onUpdate, datas, isRefresh, setIsRefresh, onCompirmModal }
 }
 
 export default useTeam

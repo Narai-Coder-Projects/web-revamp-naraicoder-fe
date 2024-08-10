@@ -1,21 +1,18 @@
 'use client'
-import usePartner from "@/hooks/usePartner"
+import { Button, ModalDelete } from "@/components/Molecules"
+import useTeam from "@/hooks/useTeam"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect } from "react"
 import { ICDelete, ICEdit } from "../../../../public/icon"
-import { Button, ModalDelete } from "@/components/Molecules"
-import useTeam from "@/hooks/useTeam"
 
 const page = () => {
-    // const { datas, onDelete, getList, isRefresh, setIsRefresh, isModalOpen, selectedId, onCompirmModal, setIsModalOpen } = usePartner()
-    const { datas, getList, isLoading, isRefresh, setIsRefresh } = useTeam()
+    const { datas, getList, onDelete, onCompirmModal, setIsModalOpen, selectedId, isModalOpen, isLoading, isRefresh, setIsRefresh } = useTeam()
 
     useEffect(() => {
         getList()
         setIsRefresh(false)
     }, [isRefresh])
-    console.log('isLoading', isLoading)
     return (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <Link href={'/dashboard/team/create'}>
@@ -102,14 +99,14 @@ const page = () => {
             </div>
 
 
-            {/* {
+            {
                 isModalOpen && (
                     <ModalDelete
                         handleCancel={() => setIsModalOpen(false)}
                         handleYes={() => onDelete(selectedId)}
                     />
                 )
-            } */}
+            }
         </div>
 
     )
